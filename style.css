@@ -1,0 +1,179 @@
+/*para retirar a margem e o preenchimento que por padrao o proprio navegador já coloca*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;/*a medida do tamanho da caixa para que seja medida a partir da borda*/
+}
+
+:root{
+    --text-color: white;
+    --bg-url: url(https://img.freepik.com/vetores-gratis/fundo-de-efeito-de-marmore-preto-e-dourado-elegante-com-glitter-dourado_1048-18886.jpg);
+    --stroke-color: rgba(255, 255, 255, 0.5);
+    --surface-color: rgba(255, 255, 255, 0.1);
+    --surface-color-hover: rgba(255, 255, 255, 0.05);
+    --highlight-color: rgba(255, 255, 255, 0.2);
+    --switch-bg-url: url(./imagens/lua.svg);
+}
+
+.light{
+    --text-color: black;
+    --bg-url: url(https://img.freepik.com/fotos-premium/fundo-de-marmore-cor-de-rosa-da-textura-textura-de-marmore-abstrata-testes-padroes-naturais-para-o-projeto_41389-539.jpg);
+    --stroke-color: rgba(0, 0, 0, 0.5);
+    --surface-color: rgba(0, 0, 0, 0.05);
+    --surface-color-hover: rgba(0, 0, 0, 0.02);
+    --highlight-color: rgba(0, 0, 0, 0.1);
+    --switch-bg-url: url(./imagens/sol.svg);
+}
+
+body{
+    /*
+    background-image: url(./local do arquivo, se for link direto da net nao precisa);
+   *por padrão a imagem se repete, entao apra não repetir:
+    background-repeat: no-repeat;
+    background-position: top center; (para centralizar a imagem desde o topo)
+    background-size: cover; (cover - cobre todo o espaço visivel com a imagem)
+    */
+/*ordem para escriver o background em uma linnha (shorthand ou atalho)*/
+/*background: color image repeat position/size */
+background: var(--bg-url) no-repeat top center/cover;
+}
+
+/*fonte da letra no fonts.google.com, copiar o link e colar no html antes do meta e escolher a cor*/
+
+body * {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-color);
+}
+/*visualizar a caixa em que serao iseridos os elementos*/
+#container{
+    width: 360px; 
+    margin: 56px auto 0px;
+    padding: 0 24px;
+
+}
+/*elemento origem do id profile, ajustando o posição da imagem*/
+#profile{
+    text-align: center;
+    padding: 24px;
+}
+/*elemento da imagem de perfil, tamanho e forma*/
+#profile img {
+    clip-path: circle();  
+    width: 160px;
+}
+
+#profile p{
+    font-weight: 500;
+    line-height: 24px;
+    margin-top: 8px;
+}
+
+/*switch*/
+
+#switch{
+   
+    position: relative; /*relative parmite que qualque coisa absoluta fique na posição desejada */
+    width: 64px;
+
+    margin: 4px auto;
+}
+
+#switch button { 
+    width: 32px;
+    height: 32px;
+    background: white var(--switch-bg-url) no-repeat center;
+    border: 0;
+    border-radius: 50%;
+
+    position: absolute; /* posiçao absolute imediatamente faz uma sobreposição de camada*/
+    top: 50%;
+    left: 0;
+    z-index: 1; /*z-index muda o andar, no caso subiu um andar*/
+    transform: translateY(-50%);
+}
+
+.light #switch button {
+    right: 0;
+    left: initial;
+}
+
+#switch span {
+    display: block;
+    width: 64px;
+    height: 24px;
+    background: var(--surface-color);
+    border: 1px solid var(--stroke-color);
+    backdrop-filter: blur(4px);
+    border-radius: 9999px;
+}
+
+/*lista de links*/
+ul{
+    list-style: none;/* para retirar os pontos dos tópicos*/
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    padding: 24px 0;
+}
+
+ul li a{
+    border: 1px solid blue;
+
+    display: flex;
+    justify-content: center;/*centraliza os itens na pagina*/
+    align-items: center; /*alinha os itens no meio da caixa*/
+
+    padding: 16px 24px;
+
+    background: var(--surface-color);
+    border: 1px solid var(--stroke-color);
+    border-radius: 8px; /*arredondamento de borda*/
+
+    backdrop-filter: blur(4px); /*coloca blur no elemnto*/
+
+    text-decoration: none;
+    font-weight: 500;
+
+    transition: background 0.2s;
+
+}
+
+/*pseudo-selector*/
+ul li a:hover {
+    background: var(--surface-color-hover);
+    border: 1.5px solid var(--text-color);
+
+}
+
+/*social links*/
+#social-links {
+    display: flex;
+    justify-content: center;
+
+    padding: 24px 0;
+
+    font-size: 24px;
+}
+
+#social-links a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+
+    transition: background 0.2s;
+    border-radius: 50%;
+}
+
+#social-links a:hover {
+    background: var(--highlight-color);
+}
+
+/*footer geralmente é usado para coloca rodapé em sites*/
+footer{
+    padding: 24px 0;
+    text-align: center;
+    font-size: 14px;
+}
